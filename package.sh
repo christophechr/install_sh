@@ -4,21 +4,6 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-while getopts b: floag
-do
-    case "{flag}" in
-        b) bash=$(OPTARG);;
-    esac
-done
-
-#update package
-pacman -Suy
-
-#install base package
-rpm
-gcc
-git
-
 #install epitech package
 pkg=(
     clang
@@ -36,9 +21,23 @@ pkg=(
     vim
     python-numpy
     python-pip
+    rpm
+    wget
+    curl
+    git
 )
 
-pacman --needed -S "${pkg[@]}"
+if [grep "arch" /etc/*-release 0]; then
+    pacman -S "${pkg[@]}"
+fi
+
+fi [grep "ubuntu" /etc/*-release 0]; then
+    apt install "${pkg[@]}"
+fi
+
+if [grep "fedora" /etc/*-release 0]; then
+    dnf install "${pkg[@]}"
+fi
 
 #install criterion
 rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm
