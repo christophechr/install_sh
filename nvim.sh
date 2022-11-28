@@ -5,6 +5,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 if [grep "arch" /etc/*-release 0]; then
+    pacman -S neovim
 fi
 
 if [grep "ubuntu" /etc/*-release 0]; then
