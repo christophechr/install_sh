@@ -4,15 +4,15 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-if [grep "arch" /etc/*-release 0]; then
+if [ -f /etc/arch-release]; then
     pacman -S neovim
 fi
 
-if [grep "ubuntu" /etc/*-release 0]; then
+if [ -f /etc/debian-version ]; then
     apt install neovim
 fi
 
-if [grep "fedora" /etc/*-release 0]; then
+if [ -f /etc/fedora-release ]; then
     dnf install -y neovim python3-neovim
 fi
 

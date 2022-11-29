@@ -27,15 +27,15 @@ pkg=(
     git
 )
 
-if [grep "arch" /etc/*-release 0]; then
+if [ -f /etc/arch-release]; then
     pacman -S "${pkg[@]}"
 fi
 
-fi [grep "ubuntu" /etc/*-release 0]; then
+if [ -f /etc/debian_version]; then
     apt install "${pkg[@]}"
 fi
 
-if [grep "fedora" /etc/*-release 0]; then
+if [ -f /etc/fedora-release]; then
     dnf install "${pkg[@]}"
 fi
 
@@ -48,6 +48,10 @@ wget https://services.gradle.org/distributions/gradle-7.0-bin.zip && mkdir /opt/
 #install stack
 curl -sSL https://get.haskellstack.org/ | sh
 
+#install norma2
+pip install -U norma2
+sudo norma2 --install-completion
+
 #config emacs
 git clone https://github.com/Epitech/epitech-emacs.git
 cd epitech-emacs
@@ -58,6 +62,6 @@ cd .. && rm -rf epitech-emacs
 #change alias emacs GUI to terminal emacs
 if ["$bash" == "bash"]; then
     echo alias emacs="emacs -nw" >> ~/.bashrc
-else if ["$bash" == "zsh"]; then
+elif ["$bash" == "zsh"]; then
     echo alias emacs="emacs -nw" >> ~/.zshrc
 fi
