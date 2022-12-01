@@ -14,7 +14,7 @@ namepkg=$"{firstarg#"$prefix"}"
 namepkg=$"{namepkg%"$suffix"}"
 
 #hort script to install the package
-if [ -f /etc/arch-release]; then
+if [ -f /etc/arch-release ]; then
     git clone "$firstarg"
     cd "$namepkg"
     makepkg -si

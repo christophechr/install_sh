@@ -4,7 +4,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-if [ -f /etc/arch-release]; then
+if [ -f /etc/arch-release ]; then
     pacman -S neovim
 fi
 
