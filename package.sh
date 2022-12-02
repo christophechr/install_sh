@@ -27,15 +27,15 @@ pkg=(
     git
 )
 
-if [ -f /etc/arch-release]; then
+if [ -f /etc/arch-release ]; then
     pacman -S "${pkg[@]}"
 fi
 
-if [ -f /etc/debian_version]; then
+if [ -f /etc/debian_version ]; then
     apt install "${pkg[@]}"
 fi
 
-if [ -f /etc/fedora-release]; then
+if [ -f /etc/fedora-release ]; then
     dnf install "${pkg[@]}"
 fi
 
