@@ -8,9 +8,6 @@ fi
 pkg=(
     clang
     cmake
-    ncurses
-    sfml
-    csfml
     systemd
     docker
     zsh
@@ -29,14 +26,28 @@ pkg=(
 
 if [ -f /etc/arch-release ]; then
     pacman -S "${pkg[@]}"
+    #install SFML & CSFML
+    pacman -S sfml
+    pacman -S csfml
+    #install ncurses
+    pacman -S ncurses
 fi
 
 if [ -f /etc/debian_version ]; then
     apt install "${pkg[@]}"
+    #install SFML & CSFML
+    apt-get install libsfml-dev
+    #install ncurses
+    apt-get install libncurses-dev
 fi
 
 if [ -f /etc/fedora-release ]; then
-    dnf install "${pkg[@]}"
+    dnf install -y "${pkg[@]}"
+    #install SFML & CSFML
+    dnf install -y SFML
+    dnf install -y CSFML
+    #install ncurses
+    dnf install -y ncurses-devel
 fi
 
 #install criterion

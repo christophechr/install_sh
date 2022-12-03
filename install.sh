@@ -3,5 +3,5 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-sh package.sh
-sh nvim.sh
+bash package.sh
+bash nvim.sh
